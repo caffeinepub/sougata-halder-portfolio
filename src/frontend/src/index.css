@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1.5rem;
+    --background: 0.065 0 0;
+    --foreground: 0.965 0.005 240;
+    --card: 0.14 0.008 240;
+    --card-foreground: 0.965 0.005 240;
+    --popover: 0.14 0.008 240;
+    --popover-foreground: 0.965 0.005 240;
+    --primary: 0.68 0.14 183;
+    --primary-foreground: 0.065 0 0;
+    --secondary: 0.18 0.01 240;
+    --secondary-foreground: 0.965 0.005 240;
+    --muted: 0.18 0.01 240;
+    --muted-foreground: 0.62 0.012 240;
+    --accent: 0.68 0.14 183;
+    --accent-foreground: 0.065 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 1 0 0 / 8%;
+    --input: 1 0 0 / 10%;
+    --ring: 0.68 0.14 183;
+    --chart-1: 0.68 0.14 183;
+    --chart-2: 0.7 0.16 200;
+    --chart-3: 0.75 0.18 55;
+    --chart-4: 0.65 0.22 303;
+    --chart-5: 0.72 0.2 147;
+    --sidebar: 0.1 0.006 240;
+    --sidebar-foreground: 0.965 0.005 240;
+    --sidebar-primary: 0.68 0.14 183;
+    --sidebar-primary-foreground: 0.065 0 0;
+    --sidebar-accent: 0.18 0.01 240;
+    --sidebar-accent-foreground: 0.965 0.005 240;
+    --sidebar-border: 1 0 0 / 8%;
+    --sidebar-ring: 0.68 0.14 183;
+    --teal: 0.68 0.14 183;
+    --cyan: 0.7 0.16 200;
+    --orange: 0.72 0.18 55;
+    --purple: 0.62 0.22 303;
+    --yellow: 0.82 0.17 90;
+    --pink: 0.67 0.22 350;
+    --green: 0.71 0.18 152;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-color: #050505;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #14b8a6, #06b6d4, #14b8a6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 20px 40px rgba(20, 184, 166, 0.1);
+}
+
+.grid-bg {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@keyframes blob-pulse {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.35;
+  }
+  33% {
+    transform: scale(1.15) translate(30px, -20px);
+    opacity: 0.45;
+  }
+  66% {
+    transform: scale(0.9) translate(-20px, 30px);
+    opacity: 0.3;
+  }
+}
+
+.blob {
+  animation: blob-pulse 8s ease-in-out infinite;
+}
+.blob-2 {
+  animation: blob-pulse 10s ease-in-out infinite 2s;
+}
+.blob-3 {
+  animation: blob-pulse 12s ease-in-out infinite 4s;
+}
+.blob-4 {
+  animation: blob-pulse 9s ease-in-out infinite 1s;
+}
+
+@keyframes bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+.animate-bounce-y {
+  animation: bounce-y 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+.animate-progress {
+  animation: progress-fill 1.2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .blob-2,
+  .blob-3,
+  .blob-4 {
+    animation: none;
+  }
+  .animate-bounce-y {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
